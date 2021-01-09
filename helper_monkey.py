@@ -228,7 +228,8 @@ def iterate_signal(history_array, strategy, pair='BTC-USD', granularity=900, cha
     history_pd = reframe_data(history_pd)
     history_pd = eATR(history_pd, lookback=10)
     history_pd = strategize(history_pd, strategy=strategy, chandelier=chandelier)
-    buy_point, sell_point = history_pd['buy_point'][-1], history_pd['sell_point'][-1]
+    end_point = len(history_pd) - 1
+    buy_point, sell_point = history_pd['buy_point'][end_point], history_pd['sell_point'][end_point]
     if buy_point == 1:
         buy_point = True
     else:
