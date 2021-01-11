@@ -208,7 +208,7 @@ def simulate_strategies(data, buy_range = (1.0, 4.0, 0.25), risk_range=(1.0, 4.0
 
 def find_optimal_strategy(strategies):
     previous_number_to_beat = 0.0
-    best_strategy = None
+    best_strategy = {'buy':1.0,'risk':1.0}
     for strategy in strategies:
         profit = strategy['total_profit']
         if profit > previous_number_to_beat:
