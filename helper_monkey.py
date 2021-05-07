@@ -277,7 +277,6 @@ def main(API_KEY, pair='BTC-USD', granularity=900, duration=7*24*60*60, cash_buf
                 running = False
             else:
                 running = True
-            continue
         elapsed_hours = (cycle/total_cycles)*total_hours
         if (elapsed_hours - hour) >= reframe_threshold:
             print('{}: Reoptimizing trading strategy...'.format(str(t)))
