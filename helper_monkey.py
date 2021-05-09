@@ -309,7 +309,7 @@ def main(API_KEY, pair='BTC-USD', granularity=900, duration=7*24*60*60, cash_buf
         
         if sell_point:
             balance = get_currency_balance('BTC', key, secret, passphrase)
-            if balance > 0.0:
+            if balance > float(output['base_min_size']):
                 response = make_trade(pair, balance, 'sell', key, secret, passphrase)
                 print('{}: Sold {} crypto.'.format(str(t), str(balance)))
                 t += 1
@@ -319,7 +319,7 @@ def main(API_KEY, pair='BTC-USD', granularity=900, duration=7*24*60*60, cash_buf
                 
         elif buy_point:
             balance = get_currency_balance('USD', key, secret, passphrase)
-            if balance > 0.0:
+            if balance > float(output['base_max_size']):
                 tender = round((1.0-cash_buffer)*balance,2)
                 response = make_trade(pair, tender, 'buy', key, secret, passphrase)
                 print('{}: Purchased BTC for ${}.'.format(str(t), str(round(tender,2))))
