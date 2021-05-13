@@ -285,6 +285,7 @@ def main(API_KEY, pair='BTC-USD', granularity=900, duration=7*24*60*60, cash_buf
             history_pd, history_array = get_historic_data(pair=pair, granularity=granularity)
             reframed = reframe_data(history_pd)
             best_strategy = optimize_strategy(reframed, buy_range = (1.0, 4.0, 0.25), risk_range=(1.0, 4.0, 0.25), chandelier=False)
+            cycle = 0
 
         # Check crypto status
         output = get_product_data(pair)
